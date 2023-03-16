@@ -1,0 +1,7 @@
+baseURL = 'http://blog.madd0.com/'
+languageCode = 'en-us'
+title = "madd0's tech blog"
+theme = 'puppet'
+
+[permalinks]
+    posts = '/:year/:month/:day/:title/'

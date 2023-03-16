@@ -23,6 +23,27 @@
                 "isDefault": true
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Add Theme",
+            "type": "shell",
+            "command": "git submodule add ${input:repository} themes/${input:themeName}",
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "repository",
+            "description": "Respoitory URL, will be added as submodule",
+            "type": "promptString"
+        },
+        {
+            "id": "themeName",
+            "description": "Respository alias to be used in Hugo configuration",
+            "type": "promptString"
         }
     ]
 }
