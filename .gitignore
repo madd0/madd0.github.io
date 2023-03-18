@@ -14,3 +14,5 @@
 # Hugo
 .hugo_build.lock
 public/
+
+node_modules/
