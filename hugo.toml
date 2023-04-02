@@ -1,37 +1,81 @@
 baseURL = 'http://blog.madd0.com/'
 languageCode = 'en-us'
 title = "madd0's tech blog"
-theme = 'bilberry-hugo-theme'
+theme = 'mainroad'
+enableEmoji = true
+
+[Author]
+  name = "Mauricio Díaz Orlich"
+  bio = "cyclist, võ sinh, software engineer @(microsoft)[https://www.microsoft.com], traveller, occasional cook"
+  avatar = "img/avatar.png"
 
 [permalinks]
-    posts = '/:year/:month/:day/:title/'
+  post = '/:year/:month/:day/:slug/'
 
 [menu]
-[[menu.main]]
-identifier = "home"
-name = "Home"
-url = "/"
-weight = -100
-[[menu.main]]
-identifier = "archive"
-name = "Archive"
-url = "/archive/"
-weight = 10
-[[menu.main]]
-identifier = "about"
-name = "About"
-url = "/about/"
-weight = 50
-[[menu.main]]
-identifier = "github"
-name = "Github"
-url = "https://github.com/madd0/"
-weight = 100
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = -100
+  [[menu.main]]
+    identifier = "archive"
+    name = "Archive"
+    url = "/archive/"
+    weight = 10
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 50
+  [[menu.main]]
+    identifier = "github"
+    name = "Github"
+    url = "https://github.com/madd0/"
+    weight = 100
+
+[privacy]
+  [privacy.disqus]
+    disable = false
+  [privacy.googleAnalytics]
+    anonymizeIP = false
+    disable = false
+    respectDoNotTrack = false
+    useSessionStorage = false
+  [privacy.instagram]
+    disable = false
+    simple = false
+  [privacy.twitter]
+    disable = false
+    enableDNT = true
+    simple = true
+  [privacy.vimeo]
+    disable = false
+    enableDNT = false
+    simple = false
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
 
 [params]
-  # Header configuration
-    # your subtitle if you want to use any
-    subtitle = "Hello World! This is the most epic subtitle ever."
+  description = "My thoughts on tech and other hopefully–not–too–irrelevant stuff"
+  opengraph = true
+  twitter_cards = false
+  readmore = true # Show "Read more" button in list if true
+  authorbox = false
+  pager = true
+  post_meta = ["date", "categories"] # Order of post meta information
+  mainSections = ["post", "docs"]
 
-    # if you want to use libravatar or gravatar for the header image
-    avatarEmail = "madd0@madd0.com"
+  [params.logo]
+  subtitle = "My thoughts on tech and other hopefully–not–too–irrelevant stuff"
+
+  [params.style.vars]
+    highlightColor = "#457b9d" # Override highlight color
+
+  [params.sidebar]
+    home = "right" # Configure layout for home page
+    list = "right"  # Configure layout for list pages
+    single = "right" # Configure layout for single pages
+    # Enable widgets in given order
+    widgets = ["search", "recent", "categories", "taglist", "social", "languages"]

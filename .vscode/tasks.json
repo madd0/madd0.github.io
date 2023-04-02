@@ -6,7 +6,7 @@
         {
             "label": "Serve Drafts",
             "type": "shell",
-            "command": "hugo server -D",
+            "command": "hugo server -D -b https://$CODESPACE_NAME-1313.$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN/ --appendPort=false",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -31,6 +31,15 @@
             "problemMatcher": [],
             "options": {
                 "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run migration script",
+            "type": "shell",
+            "command": "node index.js w in/madd0039stechblog.wordpress.2023-03-10.000.xml ../content/post m paragraph-fix",
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}/wordpress2hugo"
             }
         }
     ],
