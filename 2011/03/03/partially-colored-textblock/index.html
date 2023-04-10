@@ -1,6 +1,6 @@
 <!doctype html><html class=no-js lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Partially Coloured TextBlock - madd0's tech blog</title><script>(function(e,t){e[t]=e[t].replace("no-js","js")})(document.documentElement,"className")</script><meta name=description content><meta property="og:title" content="Partially Coloured TextBlock"><meta property="og:description" content="I stumbled upon an interesting question on StackOverflow where someone is using a series of TextBlocks in a StackPanel to show them side by side and would like part of the displayed text to be coloured with one colour and the rest with another.
 There has got to be a thousand ways to do this, but it got me thinking of how I would do it, and especially, how to do it quickly because I have a job besides StackOverflow Here’s my take on the problem."><meta property="og:type" content="article"><meta property="og:url" content="/2011/03/03/partially-colored-textblock/"><meta property="article:section" content="post"><meta property="article:published_time" content="2011-03-03T14:19:19+00:00"><meta property="article:modified_time" content="2011-03-03T14:19:19+00:00"><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="madd0's tech blog" rel=home><div class="logo__item logo__text"><div class=logo__title>madd0's tech blog</div><div class=logo__tagline>My thoughts on tech and other hopefully–not–too–irrelevant stuff</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>Menu</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>Home</span></a></li><li class=menu__item><a class=menu__link href=/archive/><span class=menu__text>Archive</span></a></li><li class=menu__item><a class=menu__link href=/about/><span class=menu__text>About</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/madd0/><span class=menu__text>Github</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Partially Coloured TextBlock</h1><div class="post__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2011-03-03T14:19:19Z>March 03, 2011</time></div></div></header><div class="content post__content clearfix"><p>I stumbled upon <a href=http://stackoverflow.com/questions/5169829/partial-text-color-update>an interesting question on StackOverflow</a> where someone is using a series of <code>TextBlock</code>s in a <code>StackPanel</code> to show them side by side and would like part of the displayed text to be coloured with one colour and the rest with another.</p><p>There has got to be a thousand ways to do this, but it got me thinking of how <em>I</em> would do it, and especially, how to do it quickly because I have a job besides StackOverflow <img src=http://blog.madd0.com/images/Windows-Live-Writer/Partially-colored-TextBlock_B304/wlEmoticon-smilewithtongueout_2.png alt="Smile with tongue out"></p><p>Here’s my take on the problem.</p><p>First, I get rid of all those TextBlocks and keep only one. This is most likely what the StackOverflow user wanted to do anyways and it will allow me to do stuff such as display text based on a binding. The user also wanted a “bindable” percentage to determine how much of the text is coloured, so I’ll set up a quick UI that will display my text and use a slider to define this percentage.</p><pre tabindex=0><code>&lt;Grid&gt;
+<span class=menu__btn-title tabindex=-1>Menu</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/><span class=menu__text>Home</span></a></li><li class=menu__item><a class=menu__link href=/archive/><span class=menu__text>Archive</span></a></li><li class=menu__item><a class=menu__link href=/about/><span class=menu__text>About</span></a></li><li class=menu__item><a class=menu__link href=https://github.com/madd0/><span class=menu__text>Github</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Partially Coloured TextBlock</h1><div class="post__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2011-03-03T14:19:19Z>March 03, 2011</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/english/ rel=category>English</a>, <a class=meta__link href=/categories/humancomputer-interaction/ rel=category>Human–computer interaction</a>, <a class=meta__link href=/categories/technology/ rel=category>Technology</a></span></div></div></header><div class="content post__content clearfix"><p>I stumbled upon <a href=http://stackoverflow.com/questions/5169829/partial-text-color-update>an interesting question on StackOverflow</a> where someone is using a series of <code>TextBlock</code>s in a <code>StackPanel</code> to show them side by side and would like part of the displayed text to be coloured with one colour and the rest with another.</p><p>There has got to be a thousand ways to do this, but it got me thinking of how <em>I</em> would do it, and especially, how to do it quickly because I have a job besides StackOverflow <img src=http://blog.madd0.com/images/Windows-Live-Writer/Partially-colored-TextBlock_B304/wlEmoticon-smilewithtongueout_2.png alt="Smile with tongue out"></p><p>Here’s my take on the problem.</p><p>First, I get rid of all those TextBlocks and keep only one. This is most likely what the StackOverflow user wanted to do anyways and it will allow me to do stuff such as display text based on a binding. The user also wanted a “bindable” percentage to determine how much of the text is coloured, so I’ll set up a quick UI that will display my text and use a slider to define this percentage.</p><pre tabindex=0><code>&lt;Grid&gt;
   &lt;Grid.RowDefinitions&gt;
     &lt;RowDefinition Height=&#34;auto&#34; /&gt;
     &lt;RowDefinition Height=&#34;auto&#34; /&gt;
@@ -13,12 +13,13 @@ There has got to be a thousand ways to do this, but it got me thinking of how I 
 
   &lt;Slider x:Name=&#34;slider&#34; Grid.Row=&#34;1&#34; Minimum=&#34;0&#34; Maximum=&#34;1&#34; Value=&#34;0.4&#34; /&gt;
 &lt;/Grid&gt;
-So now we have a TextBlock with text bound to a certain percentage. All that’s left is colouring the text appropriately.
+
+
+```So now we have a TextBlock with text bound to a certain percentage. All that’s left is colouring the text appropriately.
 
 You could do this pretty easily with just XAML and a few bindings:
 </code></pre><p>&lt;TextBlock.Foreground>
-&lt;/TextBlock.Foreground></p><pre tabindex=0><code>But, where’s the fun in that? Besides, it’s not very reusable. So, let’s make some changes.
-
+&lt;/TextBlock.Foreground></p><pre tabindex=0><code class=language-But, data-lang=But,>
 The easiest way to modify an existing control’s behaviour in WPF, without creating a custom control, is using attached properties. So that’s what I’m going to do.
 </code></pre><p>public static class PercentageColor
 {
@@ -61,59 +62,64 @@ public static void SetPercentage(DependencyObject obj, float value)
 {
     obj.SetValue(PercentageProperty, value);
 }
-</code></pre><p>}
-The class above defines 3 attached properties: Color1, Color2 and Percentage that will be used to define how the text should be coloured.</p><p>You probably noticed that there is a method missing, OnPropertyChanged, which is called every time any of the 3 attached properties changes. I left it out for clarity, but here it is:</p><pre tabindex=0><code>private static void OnPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+</code></pre><p>}</p><pre tabindex=0><code class=language-The data-lang=The>
+You probably noticed that there is a method missing, OnPropertyChanged, which is called every time any of the 3 attached properties changes. I left it out for clarity, but here it is:
+</code></pre><p>private static void OnPropertyChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
 {
-    var target = o as TextBlock;
-
-    if (target == null)
-    {
-        return;
-    }
-
-    var color1 = PercentageColor.GetColor1(o);
-    var color2 = PercentageColor.GetColor2(o);
-    var percentage = PercentageColor.GetPercentage(o);
-
-    var brush = target.Foreground as LinearGradientBrush;
-
-    if (brush == null)
-    {
-        var gradient = new LinearGradientBrush();
-        gradient.EndPoint = new Point(1, 0);
-        gradient.GradientStops.Add(new GradientStop(color1, 0));
-        gradient.GradientStops.Add(new GradientStop(color1, percentage));
-        gradient.GradientStops.Add(new GradientStop(color2, percentage));
-        gradient.GradientStops.Add(new GradientStop(color2, 1));
-
-        target.Foreground = gradient;
-    }
-    else
-    {
-        brush.GradientStops\[0\].Color = color1;
-        brush.GradientStops\[1\].Color = color1;
-        brush.GradientStops\[1\].Offset = percentage;
-        brush.GradientStops\[2\].Color = color2;
-        brush.GradientStops\[2\].Offset = percentage;
-        brush.GradientStops\[3\].Color = color2;
-    }
+var target = o as TextBlock;</p><pre><code>if (target == null)
+{
+    return;
 }
-When the value of an attached property on TextBlock changed—because of a binding, for example— the above method is fired. There are basically two possible cases:
 
-	1.  We haven’t done our magic, so the text colour is not yet a gradient, in which case the appropriate gradient has to be created.
-	2.  Magic has been done, so all we have to do is update the gradient to match the current state of the target’s attached properties.
+var color1 = PercentageColor.GetColor1(o);
+var color2 = PercentageColor.GetColor2(o);
+var percentage = PercentageColor.GetPercentage(o);
 
-All that’s left now, is to use the newly created properties on a TextBlock:
-</code></pre><p></p><pre tabindex=0><code>Don’t forget to add the appropriate XML namespace declaration (e.g. xmlns:my=&#34;clr-namespace:PercentageColorDemo&#34;).
+var brush = target.Foreground as LinearGradientBrush;
+
+if (brush == null)
+{
+    var gradient = new LinearGradientBrush();
+    gradient.EndPoint = new Point(1, 0);
+    gradient.GradientStops.Add(new GradientStop(color1, 0));
+    gradient.GradientStops.Add(new GradientStop(color1, percentage));
+    gradient.GradientStops.Add(new GradientStop(color2, percentage));
+    gradient.GradientStops.Add(new GradientStop(color2, 1));
+
+    target.Foreground = gradient;
+}
+else
+{
+    brush.GradientStops\[0\].Color = color1;
+    brush.GradientStops\[1\].Color = color1;
+    brush.GradientStops\[1\].Offset = percentage;
+    brush.GradientStops\[2\].Color = color2;
+    brush.GradientStops\[2\].Offset = percentage;
+    brush.GradientStops\[3\].Color = color2;
+}
+</code></pre><p>}</p><pre tabindex=0><code class=language-When data-lang=When>
+1.  We haven’t done our magic, so the text colour is not yet a gradient, in which case the appropriate gradient has to be created.
+2.  Magic has been done, so all we have to do is update the gradient to match the current state of the target’s attached properties.
+
+All that’s left now, is to use the newly created properties on a TextBlock:```
+&lt;TextBlock
+  my:PercentageColor.Percentage=&#34;{Binding Value, ElementName=slider}&#34;
+  my:PercentageColor.Color1=&#34;BurlyWood&#34;
+  my:PercentageColor.Color2=&#34;Beige&#34;
+  FontSize=&#34;34&#34; FontWeight=&#34;Bold&#34;
+  Text=&#34;{Binding Path=(my:PercentageColor.Percentage),
+                 StringFormat={}{0:p0} of this text is coloured,
+                 RelativeSource={x:Static RelativeSource.Self}}&#34; /&gt;
+```Don’t forget to add the appropriate XML namespace declaration (e.g. xmlns:my=&#34;clr-namespace:PercentageColorDemo&#34;).
 
 The code could probably use a little bit of refactoring and error handling, but I guess it’s not bad for a demo. You can download the sources here:
 
 [PercentageColorDemo.zip](http://blog.madd0.com/images/Windows-Live-Writer/Partially-colored-TextBlock_B304/PercentageColorDemo_1.zip)
 
 What would you have done different?
-</code></pre><pre tabindex=0><code></code></pre></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/.net/ rel=tag>.NET</a></li><li class=tags__item><a class="tags__link btn" href=/tags/english/ rel=tag>English</a></li><li class=tags__item><a class="tags__link btn" href=/tags/humancomputer-interaction/ rel=tag>Human–computer interaction</a></li><li class=tags__item><a class="tags__link btn" href=/tags/progressbar/ rel=tag>ProgressBar</a></li><li class=tags__item><a class="tags__link btn" href=/tags/stackoverflow/ rel=tag>StackOverflow</a></li><li class=tags__item><a class="tags__link btn" href=/tags/technology/ rel=tag>Technology</a></li><li class=tags__item><a class="tags__link btn" href=/tags/textblock/ rel=tag>TextBlock</a></li><li class=tags__item><a class="tags__link btn" href=/tags/wpf/ rel=tag>WPF</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/2011/02/09/la-poche-nounours-pour-les-tranfusions-chez-les-enfants-ou-pourquoi-il-est-impeacuteratif-dapprendre-aux-enfants-agrave-se-servir-dinternet/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>La poche nounours pour les tranfusions chez les enfants, ou Pourquoi il est impératif d'apprendre aux enfants à se servir d'Internet</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/2011/03/21/snowmotion/ rel=next><span class=pager__subtitle>Next&#8201;»</span><p class=pager__title></p></a></div></nav></div><aside class=sidebar><div class="widget-search widget"><form class=widget-search__form role=search method=get action=https://google.com/search><label><input class=widget-search__field type=search placeholder=SEARCH… name=q aria-label=SEARCH…></label>
+</code></pre></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/.net/ rel=tag>.NET</a></li><li class=tags__item><a class="tags__link btn" href=/tags/progressbar/ rel=tag>ProgressBar</a></li><li class=tags__item><a class="tags__link btn" href=/tags/stackoverflow/ rel=tag>StackOverflow</a></li><li class=tags__item><a class="tags__link btn" href=/tags/textblock/ rel=tag>TextBlock</a></li><li class=tags__item><a class="tags__link btn" href=/tags/wpf/ rel=tag>WPF</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/2011/02/09/la-poche-nounours-pour-les-tranfusions-chez-les-enfants-ou-pourquoi-il-est-impeacuteratif-dapprendre-aux-enfants-agrave-se-servir-dinternet/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>La poche nounours pour les tranfusions chez les enfants, ou Pourquoi il est impératif d'apprendre aux enfants à se servir d'Internet</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/2011/03/21/snowmotion/ rel=next><span class=pager__subtitle>Next&#8201;»</span><p class=pager__title></p></a></div></nav></div><aside class=sidebar><div class="widget-search widget"><form class=widget-search__form role=search method=get action=https://google.com/search><label><input class=widget-search__field type=search placeholder=SEARCH… name=q aria-label=SEARCH…></label>
 <input class=widget-search__submit type=submit value=Search>
-<input type=hidden name=sitesearch value=/></form></div><div class="widget-recent widget"><h4 class=widget__title>Recent Posts</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/2020/01/30/7-zip-compression-levels-in-azure-devops-archive-files-task/>7-Zip compression levels in Azure DevOps Archive Files task</a></li><li class=widget__item><a class=widget__link href=/2016/09/06/miss-peregrines-home-for-peculiar-children/>Miss Peregrine's Home for Peculiar Children</a></li><li class=widget__item><a class=widget__link href=/2016/06/30/de-la-politique-la-democratie-et-les-lezards/>De la politique, la démocratie et les lézards</a></li><li class=widget__item><a class=widget__link href=/2016/02/04/de-la-nouvelle-orthographe/>De la « nouvelle » orthographe</a></li><li class=widget__item><a class=widget__link href=/2015/12/14/jai-le-droit-de-voter/>J'ai le droit de voter !</a></li><li class=widget__item><a class=widget__link href=/2014/09/03/happy-birthday-doodle-je-ne-connaissais-pas-ce/>Happy Birthday Doodle</a></li><li class=widget__item><a class=widget__link href=/2013/12/16/empathy-vs-sympathy/>Empathy vs. Sympathy</a></li><li class=widget__item><a class=widget__link href=/2013/08/15/always-be-sexy-je-naurais-jamais-cru-citer/>“Always be sexy!”</a></li><li class=widget__item><a class=widget__link href=/2013/08/14/si-tu-as-16-ans-et-tu-ne-travailles-pas-encore/>Si tu as 16 ans et tu ne travailles pas encore pour la NASA…</a></li><li class=widget__item><a class=widget__link href=/2013/07/11/not-bad-tony-durao-skates-for-waters-army/>Not bad!</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>Tags</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/.net/ title=.NET>.NET</a>
+<input type=hidden name=sitesearch value=/></form></div><div class="widget-recent widget"><h4 class=widget__title>Recent Posts</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/2020/01/30/7-zip-compression-levels-in-azure-devops-archive-files-task/>7-Zip compression levels in Azure DevOps Archive Files task</a></li><li class=widget__item><a class=widget__link href=/2016/09/06/miss-peregrines-home-for-peculiar-children/>Miss Peregrine's Home for Peculiar Children</a></li><li class=widget__item><a class=widget__link href=/2016/06/30/de-la-politique-la-democratie-et-les-lezards/>De la politique, la démocratie et les lézards</a></li><li class=widget__item><a class=widget__link href=/2016/02/04/de-la-nouvelle-orthographe/>De la « nouvelle » orthographe</a></li><li class=widget__item><a class=widget__link href=/2015/12/14/jai-le-droit-de-voter/>J'ai le droit de voter !</a></li><li class=widget__item><a class=widget__link href=/2014/09/03/happy-birthday-doodle-je-ne-connaissais-pas-ce/>Happy Birthday Doodle</a></li><li class=widget__item><a class=widget__link href=/2013/12/16/empathy-vs-sympathy/>Empathy vs. Sympathy</a></li><li class=widget__item><a class=widget__link href=/2013/08/15/always-be-sexy-je-naurais-jamais-cru-citer/>“Always be sexy!”</a></li><li class=widget__item><a class=widget__link href=/2013/08/14/si-tu-as-16-ans-et-tu-ne-travailles-pas-encore/>Si tu as 16 ans et tu ne travailles pas encore pour la NASA…</a></li><li class=widget__item><a class=widget__link href=/2013/07/11/not-bad-tony-durao-skates-for-waters-army/>Not bad!</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>Categories</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/blog-stuff/>Blog Stuff</a></li><li class=widget__item><a class=widget__link href=/categories/books/>Books</a></li><li class=widget__item><a class=widget__link href=/categories/education/>Education</a></li><li class=widget__item><a class=widget__link href=/categories/en-vrac/>En Vrac</a></li><li class=widget__item><a class=widget__link href=/categories/english/>English</a></li><li class=widget__item><a class=widget__link href=/categories/espa%C3%B1ol/>Español</a></li><li class=widget__item><a class=widget__link href=/categories/food/>Food</a></li><li class=widget__item><a class=widget__link href=/categories/france/>France</a></li><li class=widget__item><a class=widget__link href=/categories/fran%C3%A7ais/>Français</a></li><li class=widget__item><a class=widget__link href=/categories/fun/>Fun</a></li><li class=widget__item><a class=widget__link href=/categories/humancomputer-interaction/>Human–computer interaction</a></li><li class=widget__item><a class=widget__link href=/categories/languages/>Languages</a></li><li class=widget__item><a class=widget__link href=/categories/making/>Making</a></li><li class=widget__item><a class=widget__link href=/categories/politique/>Politique</a></li><li class=widget__item><a class=widget__link href=/categories/soup/>Soup</a></li><li class=widget__item><a class=widget__link href=/categories/sustainable-development/>Sustainable Development</a></li><li class=widget__item><a class=widget__link href=/categories/technology/>Technology</a></li><li class=widget__item><a class=widget__link href=/categories/travel/>Travel</a></li><li class=widget__item><a class=widget__link href=/categories/uncategorized/>Uncategorized</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>Tags</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/.net/ title=.NET>.NET</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/.net-3.0/ title=".NET 3.0">.NET 3.0</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/7-zip/ title=7-Zip>7-Zip</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/8x/ title=8x>8x</a>
@@ -136,7 +142,6 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/bing/ title=Bing>Bing</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/bionics/ title=Bionics>Bionics</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/blog/ title=Blog>Blog</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/blog-stuff/ title="Blog Stuff">Blog Stuff</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/books/ title=Books>Books</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/browsers/ title=Browsers>Browsers</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/bugs/ title=Bugs>Bugs</a>
@@ -149,7 +154,6 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/chrome/ title=Chrome>Chrome</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/cin%C3%A9/ title=ciné>ciné</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/cin%C3%A9ma/ title=cinéma>cinéma</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/citation/ title=Citation>Citation</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/costa-rica/ title="Costa Rica">Costa Rica</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/css/ title=CSS>CSS</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/curation/ title=Curation>Curation</a>
@@ -164,10 +168,6 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/diy/ title=DIY>DIY</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/e-mail/ title=E-mail>E-mail</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/eco-friendly/ title=Eco-friendly>Eco-friendly</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/education/ title=Education>Education</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/en-vrac/ title="En Vrac">En Vrac</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/english/ title=English>English</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/espa%C3%B1ol/ title=Español>Español</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/events/ title=Events>Events</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/excel/ title=Excel>Excel</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/experiment/ title=Experiment>Experiment</a>
@@ -176,12 +176,10 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/firefox/ title=Firefox>Firefox</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/firstworldproblems/ title=FirstWorldProblems>FirstWorldProblems</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/fix/ title=Fix>Fix</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/food/ title=Food>Food</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/france/ title=France>France</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/fran%C3%A7ais/ title=Français>Français</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/free/ title=Free>Free</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/fun/ title=Fun>Fun</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/galerie/ title=Galerie>Galerie</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/game-development/ title="Game Development">Game Development</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/games/ title=Games>Games</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/geography/ title=Geography>Geography</a>
@@ -197,10 +195,8 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/history/ title=History>History</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/htc/ title=HTC>HTC</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/huffington-post/ title="Huffington Post">Huffington Post</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/humancomputer-interaction/ title="Human–computer interaction">Human–computer interaction</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/iis/ title=IIS>IIS</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/illusions/ title=illusions>illusions</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/image/ title=Image>Image</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/imagine-cup/ title="Imagine Cup">Imagine Cup</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/innovation/ title=Innovation>Innovation</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/inspiration/ title=Inspiration>Inspiration</a>
@@ -222,7 +218,6 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/learning/ title=Learning>Learning</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/lego-mindstorms/ title="Lego Mindstorms">Lego Mindstorms</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/leweb08/ title=LeWeb08>LeWeb08</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lien/ title=Lien>Lien</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/life/ title=life>life</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/linq/ title=LINQ>LINQ</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/linqpad/ title=LINQPad>LINQPad</a>
@@ -231,7 +226,6 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/london/ title=London>London</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/lufthansa/ title=Lufthansa>Lufthansa</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/make/ title=MAKE>MAKE</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/making/ title=Making>Making</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/malaysia/ title=Malaysia>Malaysia</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/mango/ title=Mango>Mango</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/map/ title=Map>Map</a>
@@ -260,7 +254,6 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/photosynth/ title=Photosynth>Photosynth</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/php/ title=PHP>PHP</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/plazes/ title=plazes>plazes</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/politique/ title=Politique>Politique</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/powershell/ title=PowerShell>PowerShell</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/productivity/ title=Productivity>Productivity</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/progressbar/ title=ProgressBar>ProgressBar</a>
@@ -283,9 +276,7 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/social/ title=Social>Social</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/software/ title=Software>Software</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/software-development/ title="Software Development">Software Development</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/son/ title=Son>Son</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/sosh/ title=Sosh>Sosh</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/soup/ title=Soup>Soup</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/spain/ title=Spain>Spain</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/stackoverflow/ title=StackOverflow>StackOverflow</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/statistics/ title=Statistics>Statistics</a>
@@ -294,14 +285,12 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/supinfo/ title=SUPINFO>SUPINFO</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/surface/ title=Surface>Surface</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/surprise-bag/ title="Surprise Bag">Surprise Bag</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sustainable-development/ title="Sustainable Development">Sustainable Development</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/symfony/ title=Symfony>Symfony</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/s%C3%A9curit%C3%A9/ title=sécurité>sécurité</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/t-shirts/ title=t-shirts>t-shirts</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/tablets/ title=Tablets>Tablets</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/tdf-2007/ title="TDF 2007">TDF 2007</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/techdays/ title=TechDays>TechDays</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/technology/ title=Technology>Technology</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/ted/ title=TED>TED</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/test/ title=Test>Test</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/testeursosh/ title=TesteurSosh>TesteurSosh</a>
@@ -310,17 +299,14 @@ What would you have done different?
 <a class="widget-taglist__link widget__link btn" href=/tags/tips/ title=Tips>Tips</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/toys/ title=Toys>Toys</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/translation/ title=Translation>Translation</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/travel/ title=Travel>Travel</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/tv/ title=TV>TV</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/twhirl/ title=Twhirl>Twhirl</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/twitter/ title=Twitter>Twitter</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/typography/ title=Typography>Typography</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/uncategorized/ title=Uncategorized>Uncategorized</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/unified-communications/ title="Unified Communications">Unified Communications</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/user-experience/ title="User Experience">User Experience</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/user-interfaces/ title="User Interfaces">User Interfaces</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/videos/ title=Videos>Videos</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vid%C3%A9o/ title=Vidéo>Vidéo</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/virtual-earth/ title="Virtual Earth">Virtual Earth</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/vista/ title=Vista>Vista</a>
 <a class="widget-taglist__link widget__link btn" href=/tags/visual-studio/ title="Visual Studio">Visual Studio</a>
