@@ -24,7 +24,7 @@ select p;</p><p>Post originalPost = query.FirstOrDefault();</p><p>originalPost.t
 originalPost.text_post = newPost.description;</p><p>db.SubmitChanges();</p><pre tabindex=0><code class=language-I data-lang=I>
 From the error message above, I could guess that there was a problem with the generated query that compared all fields in my table before updating for optimistic concurrency. However, if you take a look at what the designer says, this shouldn&#39;t be the case, at least not for the only NText column:
 
-[![dlinq_designer_update_check](/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check_thumb.png)](http://blog.madd0.com/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check.png)
+[![dlinq_designer_update_check](/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check_thumb.png)](/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check.png)
 
 Ah, but take a look at the generated code and what will you find?
 </code></pre><p>[global::System.Data.Linq.Column(Storage="_text_post", Name=&ldquo;text_post&rdquo;,

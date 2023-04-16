@@ -24,7 +24,7 @@ select p;</p><p>Post originalPost = query.FirstOrDefault();</p><p>originalPost.t
 originalPost.text_post = newPost.description;</p><p>db.SubmitChanges();</p><pre tabindex=0><code class=language-El data-lang=El>
 Del mensaje arriba podía adivinar que el problema venía de la consulta generada que comparaba todos los campos de mi tabla antes de actualizarla por la concurrencia optimista. Sin embargo, si ven lo que dice el designer, este no debería ser el caso, o por lo menos no para la única columna NText:
 
-[![dlinq_designer_update_check](/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check_thumb.png)](http://blog.madd0.com/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check.png)
+[![dlinq_designer_update_check](/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check_thumb.png)](/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check.png)
 
 Ah, pero ¿qué encontramos en el código generado?
 </code></pre><p>[global::System.Data.Linq.Column(Storage="_text_post", Name=&ldquo;text_post&rdquo;,
