@@ -6,7 +6,7 @@ Excepto que, por supuesto, no funcionó.</description></item><item><title>Findin
 We’re working on Excel and there’s a column with order number that end with a star and we’d like to remove it. Does anyone know how?
 Obviously, we all immediately responded in choir:
 Why, Ctrl+H (or Edit &amp;gt; Replace) and you replace character ‘*’ with nothing!
-Except that, obviously, it didn’t work. The problem: the asterisk (‘*’) is a special character when you are trying to find something in Excel; it’s a wildcard or substitution character.</description></item><item><title>Rechercher un astérisque sous Excel</title><link>/2009/10/11/finding-an-asterisk-in-excel-fr/</link><pubDate>Sun, 11 Oct 2009 21:32:02 +0000</pubDate><guid>/2009/10/11/finding-an-asterisk-in-excel-fr/</guid><description>J’étais assis à ma place quand, soudain, quelqu’un rentre dans le bureau de l’informatique avec la question la plus étrange :
+Except that, obviously, it didn’t work.</description></item><item><title>Rechercher un astérisque sous Excel</title><link>/2009/10/11/finding-an-asterisk-in-excel-fr/</link><pubDate>Sun, 11 Oct 2009 21:32:02 +0000</pubDate><guid>/2009/10/11/finding-an-asterisk-in-excel-fr/</guid><description>J’étais assis à ma place quand, soudain, quelqu’un rentre dans le bureau de l’informatique avec la question la plus étrange :
 On est sur Excel et on a une colonne avec numéros de commande qui se finissent tous par une étoile et on aimerait la virer. Quelqu’un sait comment on fait ?
 Évidemment, la réponse en chœur a été immédiate :
 Ben, Ctrl+H (ou Edition &amp;gt; Rechercher) et tu remplaces le caractère ‘*’ par rien du tout !</description></item></channel></rss>
