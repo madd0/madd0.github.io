@@ -24,7 +24,7 @@ select p;</p><p>Post originalPost = query.FirstOrDefault();</p><p>originalPost.t
 originalPost.text_post = newPost.description;</p><p>db.SubmitChanges();</p><pre tabindex=0><code class="language-J'avais" data-lang="J'avais">
 D&#39;après le message, je pouvais deviner qu&#39;il y avait un problème avec la requête générée qui doit comparer tous les champs de ma table avant la mise à jour pour un accès simultané optimiste. Toutefois, si l&#39;on regarde ce que dit le designer, ça ne devrait pas être le cas, du moins pas pour la seule colonne NText :
 
-[![dlinq_designer_update_check](http://blog.madd0.com/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check_thumb.png)](http://blog.madd0.com/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check.png)
+[![dlinq_designer_update_check](/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check_thumb.png)](http://blog.madd0.com/images/WindowsLiveWriter/lang_enYoucannotalwaysbethatoptimisticla_9832/dlinq_designer_update_check.png)
 
 Ah, mais regardez le code généré et qu&#39;est ce que l&#39;on voit ?
 </code></pre><p>[global::System.Data.Linq.Column(Storage="_text_post", Name=&ldquo;text_post&rdquo;,
